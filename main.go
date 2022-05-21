@@ -1,6 +1,6 @@
 package main
 
-import "caleen/cmd"
+import "github.com/francois2metz/caleen/cmd"
 
 func main() {
 	cmd.Execute()

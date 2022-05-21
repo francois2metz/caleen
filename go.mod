@@ -1,4 +1,4 @@
-module caleen
+module github.com/francois2metz/caleen
 
 go 1.18
 

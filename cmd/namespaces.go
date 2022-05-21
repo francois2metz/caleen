@@ -3,7 +3,7 @@ package cmd
 import (
 	"os"
 
-	baleen "github.com/francois2metz/steampipe-plugin-baleen/baleen/client"
+	"github.com/francois2metz/caleen/config"
 	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
 )
@@ -13,11 +13,8 @@ var namespacesCmd = &cobra.Command{
 	Short: "List namespaces",
 	Long:  `List Baleen namespaces`,
 	Run: func(cmd *cobra.Command, args []string) {
-		token := os.Getenv("BALEEN_TOKEN")
-		c := baleen.New(
-			baleen.WithToken(token),
-		)
-		account, err := c.GetAccount()
+		client := config.GetClient()
+		account, err := client.GetAccount()
 		if err != nil {
 			return
 		}

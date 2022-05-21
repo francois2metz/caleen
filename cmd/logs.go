@@ -2,32 +2,29 @@ package cmd
 
 import (
 	"fmt"
-	"os"
 	"strconv"
 
+	"github.com/francois2metz/caleen/config"
 	baleen "github.com/francois2metz/steampipe-plugin-baleen/baleen/client"
 	"github.com/spf13/cobra"
 )
 
 var (
-	start string
-	end string
+	start   string
+	end     string
 	logsCmd = &cobra.Command{
 		Use:   "logs",
 		Short: "Get access logs",
 		Long:  ``,
 		Run: func(cmd *cobra.Command, args []string) {
-			token := os.Getenv("BALEEN_TOKEN")
-			c := baleen.New(
-				baleen.WithToken(token),
-			)
+			client := config.GetClient()
 			startParam, err := strconv.Atoi(start)
 			if err != nil {
-				return;
+				return
 			}
 			endParam, err := strconv.Atoi(end)
 			if err != nil {
-				return;
+				return
 			}
 			params := baleen.AccessLogParams{
 				Start: startParam,
@@ -36,7 +33,7 @@ var (
 				Page:  0,
 			}
 			for {
-				accessLogs, pagination, err := c.GetAccessLogs(namespace, params)
+				accessLogs, pagination, err := client.GetAccessLogs(namespace, params)
 				if err != nil {
 					fmt.Println(err)
 					return
@@ -46,8 +43,8 @@ var (
 					fmt.Println(accessLog.Timestamp, accessLog.Status, accessLog.RequestMethod, accessLog.Scheme, accessLog.RequestUri)
 				}
 				params.Page += 1
-				if params.Page > pagination.TotalCount / 100 {
-					break;
+				if params.Page > pagination.TotalCount/100 {
+					break
 				}
 
 			}

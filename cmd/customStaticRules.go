@@ -4,7 +4,7 @@ import (
 	"os"
 	"strconv"
 
-	baleen "github.com/francois2metz/steampipe-plugin-baleen/baleen/client"
+	"github.com/francois2metz/caleen/config"
 	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
 )
@@ -16,11 +16,8 @@ var customStaticRulesCmd = &cobra.Command{
 	Short: "List custom static rules",
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
-		token := os.Getenv("BALEEN_TOKEN")
-		c := baleen.New(
-			baleen.WithToken(token),
-		)
-		rules, err := c.GetCustomStaticRules(namespace)
+		client := config.GetClient()
+		rules, err := client.GetCustomStaticRules(namespace)
 		if err != nil {
 			return
 		}
