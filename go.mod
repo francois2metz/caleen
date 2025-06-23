@@ -1,6 +1,6 @@
 module github.com/francois2metz/caleen
 
-go 1.23.0
+go 1.24.0
 
 require (
 	github.com/francois2metz/steampipe-plugin-baleen v0.0.3-0.20220521130423-fe8a08d5b1a6
@@ -22,7 +22,7 @@ require (
 	github.com/onsi/ginkgo/v2 v2.16.0 // indirect
 	github.com/quic-go/qpack v0.5.1 // indirect
 	github.com/quic-go/quic-go v0.48.2 // indirect
-	github.com/refraction-networking/utls v1.6.3 // indirect
+	github.com/refraction-networking/utls v1.7.0 // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	go.uber.org/mock v0.4.0 // indirect
