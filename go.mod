@@ -1,6 +1,6 @@
 module github.com/francois2metz/caleen
 
-go 1.18
+go 1.23.0
 
 require (
 	github.com/francois2metz/steampipe-plugin-baleen v0.0.3-0.20220521130423-fe8a08d5b1a6
@@ -10,7 +10,7 @@ require (
 
 require (
 	github.com/andybalholm/brotli v1.1.0 // indirect
-	github.com/cloudflare/circl v1.3.7 // indirect
+	github.com/cloudflare/circl v1.6.1 // indirect
 	github.com/go-task/slim-sprig v0.0.0-20230315185526-52ccab3ef572 // indirect
 	github.com/google/pprof v0.0.0-20240227163752-401108e1b7e7 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
